@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import pyrenn as prn
 
 
-datosIn = pd.read_csv("pacientesreal.csv", sep=',')
+datosIn = pd.read_csv("pacientes200.csv", sep=',')
 
 
 
