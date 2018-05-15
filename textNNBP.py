@@ -11,15 +11,10 @@ datosOut = pd.read_csv("pacientestarg.csv", sep=',')
 P = np.array(datosIn)
 Y = np.array(datosOut)
 
-
-
-
-
-
 filename = "nnBP.csv"
 net=prn.loadNN(filename)
 
-y = prn.NNOut(P,net)
+
 
 IW, LW, b = prn.w2Wb(net)  # input-weight matrices,connection weight matrices, bias vectors
 
