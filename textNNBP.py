@@ -5,6 +5,10 @@ import pyrenn as prn
 import math
 
 
+datosError=list()
+datosYNN=list()
+datos_Y= list()
+
 datosIn = pd.read_csv("pacientes200.csv", sep=',')
 
 
@@ -43,7 +47,7 @@ while dato <= datos_size:
     riesgo = target * 100
     print("Target: ")
     print(riesgo)
-
+    datos_Y.append(riesgo)
     P = np.array([[edad], [sexo], [bmi], [sys], [dia], [fuma], [padres]])
     Y = np.array([[target]])
 
@@ -53,16 +57,16 @@ while dato <= datos_size:
     # 1. Calculate NN Output
     # Y_NN, n, a = prn.NNOut_(P, net, IW, LW, b, a=1, q0=0)
     Y_NN = prn.NNOut(P, net)
-
+    Y_NNriesgo=Y_NN*100
     print("Predicted: ")
-    print(Y_NN*100)
-
+    print(Y_NNriesgo)
+    datosYNN.append(Y_NNriesgo)
     ########################
     # 2. Calculate Cost function E
     Y_delta = Y - Y_NN  # error matrix
     e = np.reshape(Y_delta, (1, np.size(Y_delta)), order='F')[0]  # error vector
     E = np.dot(e, e.transpose())  # Cost function (mean squared error)
-
+    datosError.append(E)
     # np.savetxt("P.csv", P, delimiter=",")
     # np.savetxt("Y_NN.csv", Y_NN, delimiter=",")
     # np.savetxt("Y.csv", Y, delimiter=",")
@@ -76,3 +80,6 @@ print(promedio)
 print("Programa terminado")
 
 
+np.savetxt("Datosriesgos.csv", datos_Y, delimiter=",")
+np.savetxt("DatosYNN.csv", datosYNN, delimiter=",")
+np.savetxt("DatosErrores.csv", datosError, delimiter=",")
