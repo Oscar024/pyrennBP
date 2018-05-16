@@ -75,6 +75,6 @@ E = np.dot(e, e.transpose())  # Cost function (mean squared error)
 #np.savetxt("P.csv", P, delimiter=",")
 #np.savetxt("Y_NN.csv", Y_NN, delimiter=",")
 #np.savetxt("Y.csv", Y, delimiter=",")
-
+print("Error mse: ")
 print(E)
 
