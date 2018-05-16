@@ -21,8 +21,8 @@ while dato <= datos_size:
 
     X_test = np.array(X_test)
     datos_test = X_test.reshape(1, 7)
-    # print("Datos tested: ")
-    # print(datos_test)
+    print("Datos tested: ")
+    print(datos_test)
     index = X_test.item((2, 0))
 
     filename = "nnBP.csv"
@@ -41,8 +41,8 @@ while dato <= datos_size:
                 22.949536 + (-0.156412 * edad) + (-0.202933 * sexo) + (-0.033881 * bmi) + (-0.05933 * sys) + (
                     -0.128468 * dia) + (-0.190731 * fuma) + (-0.166121 * padres) + (0.001624 * agedb))) / 0.876925))
     riesgo = target * 100
-    # print("Target: ")
-    # print(riesgo)
+    print("Target: ")
+    print(riesgo)
 
     P = np.array([[edad], [sexo], [bmi], [sys], [dia], [fuma], [padres]])
     Y = np.array([[target]])
@@ -54,8 +54,8 @@ while dato <= datos_size:
     # Y_NN, n, a = prn.NNOut_(P, net, IW, LW, b, a=1, q0=0)
     Y_NN = prn.NNOut(P, net)
 
-    # print("Predicted: ")
-    # print(Y_NN*100)
+    print("Predicted: ")
+    print(Y_NN*100)
 
     ########################
     # 2. Calculate Cost function E
