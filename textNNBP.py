@@ -9,8 +9,8 @@ datosIn = pd.read_csv("pacientes200.csv", sep=',')
 datosOut = pd.read_csv("pacientes200targ.csv", sep=',')
 
 
-#P = np.array(datosIn)
-#Y = np.array(datosOut)
+P = np.array(datosIn)
+Y = np.array(datosOut)
 #print(P.shape)
 #print(Y.shape)
 
@@ -18,13 +18,13 @@ datosOut = pd.read_csv("pacientes200targ.csv", sep=',')
 filename = "nnBP.csv"
 net=prn.loadNN(filename)
 
-edad =77
+edad =52
 sexo = 1 #mujer
-bmi = 17.63128526
-sys = 91
-dia = 88
+bmi = 100.529773
+sys = 135
+dia = 68
 fuma = 0
-padres = 2
+padres = 0
 agedb = edad*dia
 
 
@@ -34,8 +34,8 @@ riesgo = target*100
 print(riesgo)
 
 
-P = np.array([[edad],[sexo],[bmi],[sys],[dia],[fuma],[padres]])
-Y = np.array([[target]])
+P2 = np.array([[edad],[sexo],[bmi],[sys],[dia],[fuma],[padres]])
+Y2 = np.array([[target]])
 
 
 
@@ -48,8 +48,10 @@ IW, LW, b = prn.w2Wb(net)  # input-weight matrices,connection weight matrices, b
 # 1. Calculate NN Output
 #Y_NN, n, a = prn.NNOut_(P, net, IW, LW, b, a=1, q0=0)
 Y_NN = prn.NNOut(P,net)
+Y_NN2 = prn.NNOut(P2,net)
 print("Predicted: ")
 print(Y_NN)
+print(Y_NN2)
 ########################
 # 2. Calculate Cost function E
 Y_delta = Y - Y_NN  # error matrix
