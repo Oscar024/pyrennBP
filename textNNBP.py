@@ -19,6 +19,7 @@ Entradas = np.array(datosIn)
 i=0
 dato=125
 dato-=1
+
 datos_size = 1
 
 while i < datos_size:
