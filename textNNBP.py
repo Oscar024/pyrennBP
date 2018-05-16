@@ -18,21 +18,20 @@ datosOut = pd.read_csv("pacientes200targ.csv", sep=',')
 filename = "nnBP.csv"
 net=prn.loadNN(filename)
 
-edad = 83
-sexo = 1
-bmi = 49.95438563
-sys = 107
-dia = 78
-fuma = 1
-padres =0
+edad =77
+sexo = 1 #mujer
+bmi = 17.63128526
+sys = 91
+dia = 88
+fuma = 0
+padres = 2
+agedb = edad*dia
 
 
 
-target = 1-math.exp(-math.exp((math.log(4) - (22.949536 + (-0.156412*edad )+( -0.202933*sexo) + (-0.033881*bmi) + (-0.05933*sys) + (-0.128468*dia) + (-0.190731*fuma) +  (-0.166121*padres) + (0.001624*edad*dia))/0.876925)))
-
-risk = target*100
-print("Target: ")
-print(risk)
+target=1-math.exp(-math.exp((math.log(4) - (22.949536 + (-0.156412*edad )+( -0.202933*sexo) + (-0.033881*bmi) + (-0.05933*sys) + (-0.128468*dia) + (-0.190731*fuma) +  (-0.166121*padres) + (0.001624*agedb)))/0.876925))
+riesgo = target*100
+print(riesgo)
 
 
 P = np.array([[edad],[sexo],[bmi],[sys],[dia],[fuma],[padres]])
@@ -57,6 +56,7 @@ Y_delta = Y - Y_NN  # error matrix
 e = np.reshape(Y_delta, (1, np.size(Y_delta)), order='F')[0]  # error vector
 E = np.dot(e, e.transpose())  # Cost function (mean squared error)
 
+#np.savetxt("P.csv", P, delimiter=",")
 #np.savetxt("Y_NN.csv", Y_NN, delimiter=",")
 #np.savetxt("Y.csv", Y, delimiter=",")
 
