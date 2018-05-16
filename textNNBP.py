@@ -16,11 +16,12 @@ suma=0
 
 Entradas = np.array(datosIn)
 
+i=0
+dato=125
+dato-=1
+datos_size = 1
 
-dato=1
-datos_size = 200
-
-while dato <= datos_size:
+while i < datos_size:
     X_test = Entradas[0:7, dato - 1:dato]
 
     X_test = np.array(X_test)
@@ -73,6 +74,7 @@ while dato <= datos_size:
     print("Error mse: ")
     print(E)
     suma = suma+E
+    i += 1
     dato += 1
 promedio = suma/datos_size
 print("Promedio mse: ")
