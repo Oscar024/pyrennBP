@@ -17,7 +17,7 @@ suma=0
 Entradas = np.array(datosIn)
 
 i=0
-dato=125
+dato=45
 dato-=1
 
 datos_size = 1
