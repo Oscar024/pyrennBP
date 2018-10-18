@@ -17,10 +17,10 @@ suma=0
 Entradas = np.array(datosIn)
 
 i=0
-dato=45
+dato=2
 dato-=1
 
-datos_size = 1
+datos_size = 200
 
 while i < datos_size:
     X_test = Entradas[0:7, dato - 1:dato]
